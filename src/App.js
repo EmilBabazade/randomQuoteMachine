@@ -6,8 +6,9 @@ random color - DONE
 font - DONE
 animations - DONE
 quotebox size change to fit - DONE
-mobile/responsive
+mobile/responsive - DONE
 twitter share button
+test on mobile
 */
 
 
@@ -21,15 +22,15 @@ const ANIMATION_DURATION_SECONDS = 2
 
 const useStyles = createUseStyles({
     container: {
-        width: '100%',
-        height: '100%',
+        width: '100vw',
+        height: '100vh',
 
         '& *': {
             margin: 0
         },
         backgroundColor: color => color,
         fontFamily: 'Mandali, sans-serif',
-        transition: `all ${ANIMATION_DURATION_SECONDS}s`
+        transition: `background-color ${ANIMATION_DURATION_SECONDS}s`
     },
     quoteBox: {
         // center
@@ -49,19 +50,31 @@ const useStyles = createUseStyles({
         // other stuff
         backgroundColor: '#ffffff',
         color: color => color,
-        transition: `all ${ANIMATION_DURATION_SECONDS}s`,
+        transition: `color ${ANIMATION_DURATION_SECONDS}s`,
+    },
+    '@media screen and (max-width: 1550px)': {
+        quoteBox: {
+            left: '15%',
+            right: '15%'
+        }
+    },
+    '@media screen and (max-width: 600px)': {
+        quoteBox: {
+            left: '5%',
+            right: '5%'
+        }
     },
     newQuoteBtn: {
         // size and position
         border: 'none',
         padding: '5px',
-        width: '30%',
+        width: 'auto',
         height: '10%',
         borderRadius: '5px',
         // other stuff
         backgroundColor: color => color,
         color: '#ffffff',
-        transition: `all ${ANIMATION_DURATION_SECONDS}s`
+        transition: `background-color ${ANIMATION_DURATION_SECONDS}s`
     }
 })
 
