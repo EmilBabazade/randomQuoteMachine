@@ -5,7 +5,7 @@ positioning - DONE
 random color - DONE
 font - DONE
 animations - DONE
-quotebox size change to fit
+quotebox size change to fit - DONE
 mobile/responsive
 twitter share button
 */
@@ -35,10 +35,11 @@ const useStyles = createUseStyles({
         // center
         position: 'absolute',
         top: '30%',
-        left: '25%',
+        left: '30%',
+        right: '30%',
         // size 
-        width: '50%',
-        height: '40%',
+        width: 'auto',
+        height: 'auto',
         // center inside
         padding: '30px',
         display: 'flex',
@@ -53,7 +54,8 @@ const useStyles = createUseStyles({
     newQuoteBtn: {
         // size and position
         border: 'none',
-        width: '20%',
+        padding: '5px',
+        width: '30%',
         height: '10%',
         borderRadius: '5px',
         // other stuff
