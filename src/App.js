@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {useState, useEffect} from 'react'
+import {getQuotes} from './services/Quote'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+const App = () => {
+    const [currQuote, setCurrQuote] = useState({
+        author: '1', quote: '1'
+    })
+    const [quotes, setQuotes] = useState([])
+
+    // initialize quotes and currentQuote
+    useEffect(() => {
+        getQuotes()
+            .then(quotes => {
+                setQuotes(quotes)
+                const index = Math.floor(Math.random() * (quotes.length - 1))
+                setCurrQuote(quotes[index])
+            })
+    }, [])
+
+    return (
+        <div>
+            {currQuote.quote}
+            {/* {currQuote.author} */}
+        </div>
+    )
 }
 
-export default App;
+export default App
