@@ -3,9 +3,11 @@ TODO:
 random quote - DONE
 positioning - DONE
 random color - DONE
-font
-animations
+font - DONE
+animations - DONE
+quotebox size change to fit
 mobile/responsive
+twitter share button
 */
 
 
@@ -15,6 +17,8 @@ import {getQuotes} from './services/Quote'
 import {createUseStyles} from 'react-jss'
 import './index.css' // box sizing and stuff
 
+const ANIMATION_DURATION_SECONDS = 2
+
 const useStyles = createUseStyles({
     container: {
         width: '100%',
@@ -23,7 +27,9 @@ const useStyles = createUseStyles({
         '& *': {
             margin: 0
         },
-        backgroundColor: color => color
+        backgroundColor: color => color,
+        fontFamily: 'Mandali, sans-serif',
+        transition: `all ${ANIMATION_DURATION_SECONDS}s`
     },
     quoteBox: {
         // center
@@ -34,14 +40,15 @@ const useStyles = createUseStyles({
         width: '50%',
         height: '40%',
         // center inside
-        padding: '20px',
+        padding: '30px',
         display: 'flex',
         flexFlow: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
         // other stuff
         backgroundColor: '#ffffff',
-        color: color => color
+        color: color => color,
+        transition: `all ${ANIMATION_DURATION_SECONDS}s`,
     },
     newQuoteBtn: {
         // size and position
@@ -51,7 +58,8 @@ const useStyles = createUseStyles({
         borderRadius: '5px',
         // other stuff
         backgroundColor: color => color,
-        color: '#ffffff'
+        color: '#ffffff',
+        transition: `all ${ANIMATION_DURATION_SECONDS}s`
     }
 })
 
@@ -86,7 +94,6 @@ const App = () => {
                 setCurrQuote(quotes[index])
             })
     }, [])
-
     
     // Move to another random quote
     const newQuote = evt => {
